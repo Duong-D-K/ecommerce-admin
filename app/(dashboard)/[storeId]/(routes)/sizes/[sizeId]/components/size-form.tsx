@@ -1,6 +1,6 @@
 "use client";
 
-import { Size, Store } from "@prisma/client";
+import { Size } from "@prisma/client";
 import { Trash } from "lucide-react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
@@ -16,7 +16,6 @@ import { Separator } from "@/components/ui/separator";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
     name: z.string().min(5, { message: "Size Label must contain at least 5 character(s)." }),

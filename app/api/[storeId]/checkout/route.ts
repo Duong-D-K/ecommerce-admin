@@ -1,9 +1,8 @@
-import prismadb from "@/lib/prismadb";
-import { stripe } from "@/lib/stripe";
-import { url } from "inspector";
-import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+
+import prismadb from "@/lib/prismadb";
+import { stripe } from "@/lib/stripe";
 
 const corsHeader = {
     "Access-Control-Allow-Origin": "*",
@@ -11,7 +10,7 @@ const corsHeader = {
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
-export async function OPTIONS(params: null) {
+export async function OPTIONS() {
     return NextResponse.json({}, { headers: corsHeader });
 }
 
@@ -19,7 +18,7 @@ export async function POST(req: Request, { params }: { params: { storeId: string
     const { productIds } = await req.json();
 
     if (!productIds || productIds.length === 0) {
-        return new NextResponse("Product ids are not required", { status: 400 });
+        return new NextResponse("Product ids are required.", { status: 400 });
     }
 
     const products = await prismadb.product.findMany({

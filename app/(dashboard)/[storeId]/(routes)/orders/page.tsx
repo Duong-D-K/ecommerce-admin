@@ -1,10 +1,8 @@
 import { format } from "date-fns";
 
 import prismadb from "@/lib/prismadb";
-
 import { OrderClient } from "./components/client";
 import { OrderColumn } from "./components/columns";
-import { Phone } from "lucide-react";
 import { formatter } from "@/lib/utils";
 
 const OrderPage = async ({ params }: { params: { storeId: string } }) => {

@@ -1,6 +1,7 @@
-import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+
+import prismadb from "@/lib/prismadb";
 
 export async function POST(req: Request, { params }: { params: { storeId: string } }) {
     try {
@@ -83,7 +84,6 @@ export async function GET(req: Request, { params }: { params: { storeId: string 
         const colorId = searchParams.get("colorId") || undefined;
         const sizeId = searchParams.get("sizeId") || undefined;
         const isFeatured = searchParams.get("isFeatured") || undefined;
-        // const isArchived = searchParams.get("isArchived") || undefined;
 
         if (!params.storeId) {
             return new NextResponse("Store Id is required.", { status: 400 });
